@@ -6,8 +6,6 @@ function sendFormRequest(){
 }
 
 function sendCanvasRequest(coordinates){
-    cleanCanvas();
-    draw();
     cleanError();
     const X_val = coordinates.x;
     const Y_val = coordinates.y;

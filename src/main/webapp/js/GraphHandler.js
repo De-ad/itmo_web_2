@@ -43,6 +43,8 @@ function drawCanvasWithPoints(r){
 }
 
 function clickListener(canvas, event, ctx){
+    cleanCanvas();
+    draw();
     cleanError();
     const rect = canvas.getBoundingClientRect();
     const x = event.clientX - rect.left;
