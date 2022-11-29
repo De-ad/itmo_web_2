@@ -1,7 +1,6 @@
 <%@ page import="java.util.ArrayList" %>
 <%@ page import="com.lab.web.DTO.HitRow" %>
 <%@ page import="com.lab.web.util.HitRowFormatter" %>
-<%@ page import="java.io.PrintWriter" %>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -34,7 +33,7 @@
 </div>
 
 <div class="main_and_gifs" style="display: flex;">
-    <img src="public/kitty_hit.gif" style="margin: 10px" alt="">
+    <img src="public/kitty_hit.gif" style="margin: 10px" width="220" height="272" alt="">
 <div class="main" style="display:grid; justify-content: center;">
 
 <div class="form_and_graph" style="display: flex; margin: 10px">
@@ -121,7 +120,7 @@
     </div>
 
 </div>
-    <img src="public/kitty_walk.gif" style="margin: 10px" alt="">
+    <img src="public/kitty_walk.gif" width="220" height="277" style="margin: 10px" alt="">
 </div>
 </body>
 <script type="text/javascript" src="js/GraphHandler.js"></script>
