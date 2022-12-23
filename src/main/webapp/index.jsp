@@ -19,7 +19,7 @@
     <link rel="stylesheet" href="styles/header.css">
     <link rel="stylesheet" href="styles/table.css">
 </head>
-<body onload="draw();">
+<body onload="firstDrawHandler();">
 <% ServletContext servletContext = request.getServletContext();
     ArrayList<HitRow> hitRows = (ArrayList<HitRow>)servletContext.getAttribute("data");
 

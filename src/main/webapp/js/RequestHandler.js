@@ -1,18 +1,23 @@
 function sendFormRequest(){
-    cleanCanvas();
-    draw();
     setCoordinates();
+    if (handleRChange()){
+        cleanCanvas();
+        draw();
+    }
     sendRequest(getCoordinates());
 }
 
 function sendCanvasRequest(coordinates){
-    console.log("we are inside send canvas request, coordinates are ok");
     cleanError();
     const X_val = coordinates.x;
     const Y_val = coordinates.y;
     const R_val = coordinates.r;
     const canvas = document.getElementById("plot");
     const ctx = canvas.getContext('2d');
+    if (handleRChange()){
+        cleanCanvas();
+        draw();
+    }
         $.ajax({
             url: "controller",
             method: "POST",

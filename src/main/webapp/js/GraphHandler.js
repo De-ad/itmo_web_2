@@ -1,21 +1,39 @@
 const width = 300;
 const height = 300;
 const radius_pix = 100;
-var default_R;
-var array;
+var prev = null;
+let array;
 const canvas = document.getElementById("plot");
 const ctx = canvas.getContext('2d');
 
 function draw() {
-    const canvas = document.getElementById("plot");
-    const ctx = canvas.getContext('2d');
-    canvas.addEventListener("mousedown", function (e){
-        clickListener(canvas, e, ctx);
-    });
     drawCircle(ctx);
     drawSquare(ctx);
     drawTriangle(ctx);
     drawLines(ctx);
+}
+
+function addMouseListener(){
+    canvas.addEventListener("mousedown", function (e){
+        clickListener(canvas, e, ctx);
+    });
+}
+
+function firstDrawHandler(){
+    addMouseListener();
+    draw();
+}
+
+function handleRChange(){
+    if (prev == null){
+        prev = getCoordinates().r;
+
+    }
+    if (prev !== getCoordinates().r){
+        prev = getCoordinates().r
+        return true;
+    }
+    return false;
 }
 
 // function redrawCanvas(newAttemptsArray){
