@@ -36,7 +36,6 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-        <!-- https://mvnrepository.com/artifact/org.kopitubruk.util/JSONUtil -->
         <dependency>
             <groupId>org.kopitubruk.util</groupId>
             <artifactId>JSONUtil</artifactId>
@@ -53,6 +52,7 @@
     </dependencies>
 
     <build>
+        <finalName>web</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -60,5 +60,6 @@
                 <version>3.3.1</version>
             </plugin>
         </plugins>
+
     </build>
 </project>

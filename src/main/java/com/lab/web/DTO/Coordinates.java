@@ -13,7 +13,7 @@ import java.util.Map;
 @Getter
 @Setter
 public class Coordinates {
-    private int x;
+    private double x;
     private double y;
     private double r;
 

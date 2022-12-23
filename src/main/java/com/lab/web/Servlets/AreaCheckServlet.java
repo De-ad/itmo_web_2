@@ -17,13 +17,15 @@ import java.util.ArrayList;
 public class AreaCheckServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        System.out.println("area check get");
         String path = "/error";
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(path);
         requestDispatcher.forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+//        System.out.println("area check post");
             long endTime = System.currentTimeMillis();
             long startTime = (Long) request.getAttribute("startTime");
             long executionTime = (endTime - startTime);

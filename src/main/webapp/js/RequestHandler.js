@@ -6,27 +6,24 @@ function sendFormRequest(){
 }
 
 function sendCanvasRequest(coordinates){
+    console.log("we are inside send canvas request, coordinates are ok");
     cleanError();
     const X_val = coordinates.x;
     const Y_val = coordinates.y;
     const R_val = coordinates.r;
     const canvas = document.getElementById("plot");
     const ctx = canvas.getContext('2d');
-    if (validate(X_val, Y_val, R_val)){
-        {
-            $.ajax({
-                url: "controller",
-                method: "POST",
-                data: {'X_val': X_val, "Y_val" : Y_val, "R_val": R_val},
-                success: function (Json) {
-                    document.querySelector('#table > tbody').innerHTML += addRow(Json);
-                }
-            });
-        }
-    }
-    else{
-        console.log("validation failed");
-    }
+        $.ajax({
+            url: "controller",
+            method: "POST",
+            data: {'X_val': X_val, "Y_val" : Y_val, "R_val": R_val},
+            success: function (Json) {
+                document.querySelector('#table > tbody').innerHTML += addRow(Json);
+                drawDot(X_val, Y_val, R_val, ctx, getHitResult(Json));
+            }
+        });
+
+
 }
 
 function sendRequest(coordinates){
@@ -37,7 +34,6 @@ function sendRequest(coordinates){
     const canvas = document.getElementById("plot");
     const ctx = canvas.getContext('2d');
     if (validate(X_val, Y_val, R_val)){
-        drawDot(X_val, Y_val, R_val, ctx);
         {
             $.ajax({
                 url: "controller",
@@ -45,6 +41,7 @@ function sendRequest(coordinates){
                 data: {'X_val': X_val, "Y_val" : Y_val, "R_val": R_val},
                 success: function (Json) {
                     document.querySelector('#table > tbody').innerHTML += addRow(Json);
+                    drawDot(X_val, Y_val, R_val, ctx, getHitResult(Json));
                 }
             });
         }

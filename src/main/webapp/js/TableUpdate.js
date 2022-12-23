@@ -9,3 +9,8 @@ function addRow(str){
     let executionTime = "<td>" + json.executionTime + "</td>";
     return "<tr>" + x + y + r + result + currentTime + executionTime + "</tr>";
 }
+
+function getHitResult(str){
+    const json = JSON.parse(JSON.stringify(str));
+    return json.result === 'true';
+}

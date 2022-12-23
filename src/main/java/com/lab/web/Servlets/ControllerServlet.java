@@ -15,6 +15,7 @@ import java.util.ArrayList;
 public class ControllerServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        System.out.println("controller get");
         String path = "/error";
         RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(path);
         requestDispatcher.forward(request, response);
@@ -22,6 +23,7 @@ public class ControllerServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+//        System.out.println("controller post");
         long startTime = System.currentTimeMillis();
         request.setAttribute("startTime", startTime);
         boolean forward = true;
@@ -30,15 +32,22 @@ public class ControllerServlet extends HttpServlet {
            forward = false;
         }
         if (forward) {
-            int xValue = Validator.validateX(request.getParameter("X_val"));
-            double yValue = Validator.validateY(request.getParameter("Y_val"));
-            double rValue = Validator.validateR(request.getParameter("R_val"));
-            Coordinates coordinates = new Coordinates(xValue, yValue, rValue);
-            request.setAttribute("coordinates", coordinates);
+            try {
+                double xValue = Validator.validateX(request.getParameter("X_val"));
+                double yValue = Validator.validateY(request.getParameter("Y_val"));
+                double rValue = Validator.validateR(request.getParameter("R_val"));
+                Coordinates coordinates = new Coordinates(xValue, yValue, rValue);
+                request.setAttribute("coordinates", coordinates);
 
-            String path = "/area-check";
-            RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(path);
-            requestDispatcher.forward(request, response);
+                String path = "/area-check";
+                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(path);
+                requestDispatcher.forward(request, response);
+            }
+            catch (Exception e){
+                String path = "/error";
+                RequestDispatcher requestDispatcher = getServletContext().getRequestDispatcher(path);
+                requestDispatcher.forward(request, response);
+            }
         }
     }
 

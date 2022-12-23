@@ -15,7 +15,7 @@ import java.util.Map;
 @AllArgsConstructor
 @NoArgsConstructor
 public class HitRow {
-    private int x;
+    private double x;
     private  double y;
     private  double r;
     private String result;
